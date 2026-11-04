@@ -113,14 +113,21 @@ hr {
 .stores {
   margin: 0 0 24px;
 }
-.stores a {
-  display: inline-block;
+.store {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: var(--ball);
+  color: #1d2a06;
+  text-decoration: none;
+  border-radius: 12px;
+  padding: 10px 18px;
+  line-height: 1.25;
 }
-.badge {
-  height: 54px;
-  width: auto;
-  display: block;
+.store b {
+  font-size: 22px;
 }
-.stores .dim {
-  margin: 6px 0 0;
+.store small {
+  font-size: 12px;
+  font-weight: 600;
 }
