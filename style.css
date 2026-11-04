@@ -124,3 +124,39 @@ hr {
 .stores .dim {
   margin: 6px 0 0;
 }
+
+/* dil seçici (2026-11-04, 11 dil) */
+.langpick {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--panel);
+  border-radius: 8px;
+  padding: 0 4px 0 10px;
+}
+.langpick select {
+  background: transparent;
+  color: var(--chalk);
+  border: 0;
+  font: inherit;
+  font-weight: 600;
+  padding: 8px 4px;
+  max-width: 11em;
+}
+.langpick option {
+  background: var(--panel);
+}
+.vh {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.note {
+  color: var(--dim);
+  font-size: 14px;
+  font-style: italic;
+}

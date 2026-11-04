@@ -1,12 +1,75 @@
 <!doctype html>
-<html lang="tr">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>In or Out · Gizlilik / Privacy</title>
-    <meta name="description" content="In or Out gizlilik politikası. Privacy policy." />
+    <title>In or Out · Privacy</title>
+    <meta name="description" content="In or Out privacy policy." />
     <link rel="icon" href="favicon.png" />
     <link rel="stylesheet" href="style.css" />
+    <style>
+      html[data-lang] [data-l] {
+        display: none;
+      }
+      html[data-lang='tr'] [data-l='tr'] {
+        display: block;
+      }
+      html[data-lang='en'] [data-l='en'] {
+        display: block;
+      }
+      html[data-lang='es'] [data-l='es'] {
+        display: block;
+      }
+      html[data-lang='pt'] [data-l='pt'] {
+        display: block;
+      }
+      html[data-lang='de'] [data-l='de'] {
+        display: block;
+      }
+      html[data-lang='fr'] [data-l='fr'] {
+        display: block;
+      }
+      html[data-lang='ja'] [data-l='ja'] {
+        display: block;
+      }
+      html[data-lang='id'] [data-l='id'] {
+        display: block;
+      }
+      html[data-lang='ko'] [data-l='ko'] {
+        display: block;
+      }
+      html[data-lang='ru'] [data-l='ru'] {
+        display: block;
+      }
+      html[data-lang='zh'] [data-l='zh'] {
+        display: block;
+      }
+    </style>
+    <script>
+      /* Dili sayfa çizilmeden seç (yanıp sönme olmasın). Bu dosya scripts/site/build_site.py ile üretilir. */
+      (function () {
+        var L = ['tr', 'en', 'es', 'pt', 'de', 'fr', 'ja', 'id', 'ko', 'ru', 'zh'];
+        function norm(c) {
+          c = String(c || '').toLowerCase();
+          if (c.indexOf('in') === 0 && (c.length === 2 || c[2] === '-')) return 'id';
+          c = c.slice(0, 2);
+          return L.indexOf(c) >= 0 ? c : null;
+        }
+        var pick = null;
+        try {
+          pick = norm(new URLSearchParams(location.search).get('lang'));
+        } catch (e) {}
+        if (!pick)
+          try {
+            pick = norm(localStorage.getItem('inorout-site-lang'));
+          } catch (e) {}
+        if (!pick) {
+          var nav = navigator.languages || [navigator.language];
+          for (var i = 0; i < nav.length && !pick; i++) pick = norm(nav[i]);
+        }
+        document.documentElement.setAttribute('data-lang', pick || 'en');
+      })();
+    </script>
   </head>
   <body>
     <main>
@@ -17,12 +80,41 @@
         </p>
       </header>
       <nav>
-        <a href="index.html">Destek · Support</a>
-        <a href="privacy.html" aria-current="page">Gizlilik · Privacy</a>
-        <a href="#en">English ↓</a>
+        <a href="index.html" id="nav-support">Support</a>
+        <a href="privacy.html" id="nav-privacy" aria-current="page">Privacy</a>
+        <label class="langpick"
+          ><span class="vh" id="lang-label">Language</span>
+          <span aria-hidden="true">🌐</span>
+          <select id="lang" aria-labelledby="lang-label">
+            <option value="tr">Türkçe</option>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <option value="pt">Português</option>
+            <option value="de">Deutsch</option>
+            <option value="fr">Français</option>
+            <option value="ja">日本語</option>
+            <option value="id">Bahasa Indonesia</option>
+            <option value="ko">한국어</option>
+            <option value="ru">Русский</option>
+            <option value="zh">繁體中文</option>
+          </select></label
+        >
       </nav>
 
-      <section lang="tr">
+      <!-- Mağaza düğmeleri. Google Play herkese açılınca ikinci düğme eklenir:
+     https://play.google.com/store/apps/details?id=com.ivoisaev.inorout -->
+      <div class="stores">
+        <a href="https://apps.apple.com/app/id6826820594">
+          <img
+            class="badge"
+            id="badge"
+            src="app-store-badge-en.svg"
+            alt="Download on the App Store" />
+        </a>
+        <p class="dim">iPhone · iPad · Apple TV · Mac</p>
+      </div>
+
+      <section lang="tr" data-l="tr">
         <h1>In or Out — Gizlilik Politikası</h1>
         <p class="dim">Son güncelleme: 21 Ekim 2026</p>
         <p>
@@ -79,7 +171,7 @@
         </p>
       </section>
 
-      <section lang="en" id="en">
+      <section lang="en" data-l="en">
         <h1>In or Out — Privacy Policy</h1>
         <p class="dim">Last updated: October 21, 2026</p>
         <p>
@@ -135,6 +227,686 @@
           <a href="mailto:ismetkorucuoglu07@gmail.com">ismetkorucuoglu07@gmail.com</a>
         </p>
       </section>
+
+      <section lang="es" data-l="es">
+        <h1>In or Out — Política de privacidad</h1>
+        <p class="dim">Última actualización: 21 de octubre de 2026</p>
+        <p class="note">
+          Esta traducción es solo informativa; en caso de diferencia, prevalece la versión en
+          inglés.
+        </p>
+        <p>
+          In or Out ("el juego") es un juego de juez de línea de tenis desarrollado por İsmet
+          Korucuoğlu. Esta política explica qué información usa el juego.
+        </p>
+        <p>
+          <b>Información que recopilamos.</b> Ninguna. No pedimos cuenta, nombre, correo ni
+          ubicación. Tus mejores puntuaciones, resultados del Diario 20, racha y ajustes (idioma,
+          sonido, modo daltónico, vibración) se guardan solo en tu dispositivo y nunca se nos
+          envían. Al borrar el juego se borran.
+        </p>
+        <p>
+          <b>Notificaciones.</b> Los recordatorios de "mantén tu racha" son notificaciones locales
+          programadas en tu dispositivo, no enviadas desde un servidor. Puedes desactivarlas en
+          Ajustes.
+        </p>
+        <p>
+          <b>Compartir.</b> Al tocar "Compartir", la tarjeta de puntuación se crea en tu dispositivo
+          y se envía a la app que elijas. No la vemos ni la guardamos.
+        </p>
+        <p>
+          <b>Anuncios (versión gratuita).</b> La versión gratuita muestra anuncios de Google AdMob.
+          AdMob puede tratar datos como el identificador de publicidad del dispositivo, la dirección
+          IP e información del dispositivo para mostrar y medir anuncios. En el Espacio Económico
+          Europeo y el Reino Unido se te pide consentimiento primero; en iPhone se solicita el
+          permiso de rastreo de Apple. Si lo rechazas, se muestran anuncios no personalizados.
+          Detalles:
+          <a href="https://policies.google.com/technologies/ads"
+            >https://policies.google.com/technologies/ads</a
+          >
+        </p>
+        <p>
+          <b>Compras (Pro).</b> Las compras se hacen a través de Apple App Store o Google Play;
+          nunca vemos tus datos de pago. Usamos RevenueCat para verificar las compras; RevenueCat
+          recibe un número de usuario anónimo generado al azar y la información de la compra, no tu
+          identidad. Detalles:
+          <a href="https://www.revenuecat.com/privacy">https://www.revenuecat.com/privacy</a>
+        </p>
+        <p>
+          <b>Clasificaciones.</b> Si iniciaste sesión en Game Center (Apple) o Google Play Games, tu
+          puntuación se envía a la clasificación de ese servicio con tu nombre de jugador allí. Esto
+          se rige por las políticas de privacidad de Apple o Google.
+        </p>
+        <p>
+          <b>Analítica.</b> Para mejorar el juego podemos recopilar datos de uso anónimos (p. ej.,
+          qué pista y línea se eligieron, cuántos niveles duró un partido). No te identifican.
+        </p>
+        <p>
+          <b>Menores.</b> El juego es apto para todos, pero no está dirigido a menores de 13 años.
+          No recopilamos a sabiendas información personal de menores.
+        </p>
+        <p>
+          <b>Contacto.</b> Para preguntas:
+          <a href="mailto:ismetkorucuoglu07@gmail.com">ismetkorucuoglu07@gmail.com</a>
+        </p>
+      </section>
+
+      <section lang="pt-BR" data-l="pt">
+        <h1>In or Out — Política de Privacidade</h1>
+        <p class="dim">Última atualização: 21 de outubro de 2026</p>
+        <p class="note">
+          Esta tradução é apenas informativa; em caso de divergência, prevalece a versão em inglês.
+        </p>
+        <p>
+          In or Out ("o jogo") é um jogo de juiz de linha de tênis desenvolvido por İsmet
+          Korucuoğlu. Esta política explica quais informações o jogo usa.
+        </p>
+        <p>
+          <b>Informações que coletamos.</b> Nenhuma. Não pedimos conta, nome, e-mail nem
+          localização. Suas melhores pontuações, resultados do Diário 20, sequência e ajustes
+          (idioma, som, modo daltônico, vibração) ficam só no seu aparelho e nunca são enviados para
+          nós. Ao apagar o jogo, eles são apagados.
+        </p>
+        <p>
+          <b>Notificações.</b> Os lembretes de "mantenha sua sequência" são notificações locais
+          agendadas no seu aparelho, não enviadas por um servidor. Você pode desativá-las em
+          Ajustes.
+        </p>
+        <p>
+          <b>Compartilhamento.</b> Ao tocar em "Compartilhar", o card de pontuação é criado no seu
+          aparelho e enviado ao app que você escolher. Não vemos nem guardamos esse card.
+        </p>
+        <p>
+          <b>Anúncios (versão gratuita).</b> A versão gratuita mostra anúncios do Google AdMob. O
+          AdMob pode tratar dados como o ID de publicidade do aparelho, o endereço IP e informações
+          do aparelho para exibir e medir anúncios. No Espaço Econômico Europeu e no Reino Unido,
+          seu consentimento é pedido primeiro; no iPhone, é pedida a permissão de rastreamento da
+          Apple. Se você recusar, são exibidos anúncios não personalizados. Detalhes:
+          <a href="https://policies.google.com/technologies/ads"
+            >https://policies.google.com/technologies/ads</a
+          >
+        </p>
+        <p>
+          <b>Compras (Pro).</b> As compras são feitas pela Apple App Store ou pelo Google Play;
+          nunca vemos seus dados de pagamento. Usamos o RevenueCat para verificar compras; o
+          RevenueCat recebe um número de usuário anônimo gerado aleatoriamente e as informações da
+          compra, não a sua identidade. Detalhes:
+          <a href="https://www.revenuecat.com/privacy">https://www.revenuecat.com/privacy</a>
+        </p>
+        <p>
+          <b>Rankings.</b> Se você estiver conectado ao Game Center (Apple) ou ao Google Play Games,
+          sua pontuação é enviada ao ranking desse serviço com o seu nome de jogador lá. Isso segue
+          as políticas de privacidade da Apple ou do Google.
+        </p>
+        <p>
+          <b>Análise.</b> Para melhorar o jogo, podemos coletar dados de uso anônimos (por exemplo,
+          qual quadra e linha foram escolhidas, quantos níveis durou uma partida). Eles não
+          identificam você.
+        </p>
+        <p>
+          <b>Crianças.</b> O jogo é adequado para todos, mas não é direcionado a menores de 13 anos.
+          Não coletamos intencionalmente informações pessoais de crianças.
+        </p>
+        <p>
+          <b>Contato.</b> Para dúvidas:
+          <a href="mailto:ismetkorucuoglu07@gmail.com">ismetkorucuoglu07@gmail.com</a>
+        </p>
+      </section>
+
+      <section lang="de" data-l="de">
+        <h1>In or Out — Datenschutzerklärung</h1>
+        <p class="dim">Zuletzt aktualisiert: 21. Oktober 2026</p>
+        <p class="note">
+          Diese Übersetzung dient nur zur Information; im Zweifel gilt die englische Fassung.
+        </p>
+        <p>
+          In or Out („das Spiel“) ist ein Tennis-Linienrichter-Spiel, entwickelt von İsmet
+          Korucuoğlu. Diese Erklärung beschreibt, welche Informationen das Spiel verwendet.
+        </p>
+        <p>
+          <b>Welche Daten wir erheben.</b> Keine. Wir fragen nicht nach Konto, Name, E-Mail oder
+          Standort. Deine Bestwerte, Daily-20-Ergebnisse, Serie und Einstellungen (Sprache, Ton,
+          Farbenblind-Modus, Vibration) werden nur auf deinem Gerät gespeichert und nie an uns
+          gesendet. Wenn du das Spiel löschst, werden sie gelöscht.
+        </p>
+        <p>
+          <b>Benachrichtigungen.</b> Die Erinnerungen „Halte deine Serie“ sind lokale
+          Benachrichtigungen auf deinem Gerät und werden nicht von einem Server gesendet. Du kannst
+          sie in den Einstellungen ausschalten.
+        </p>
+        <p>
+          <b>Teilen.</b> Wenn du auf „Teilen“ tippst, wird die Ergebniskarte auf deinem Gerät
+          erstellt und an die App gesendet, die du wählst. Wir sehen und speichern sie nicht.
+        </p>
+        <p>
+          <b>Werbung (kostenlose Version).</b> Die kostenlose Version zeigt Werbung von Google
+          AdMob. AdMob kann Daten wie die Werbe-ID des Geräts, die IP-Adresse und
+          Geräteinformationen verarbeiten, um Werbung anzuzeigen und zu messen. Im Europäischen
+          Wirtschaftsraum und im Vereinigten Königreich wirst du zuerst um Einwilligung gebeten; auf
+          dem iPhone wird Apples Tracking-Erlaubnis abgefragt. Lehnst du ab, wird nicht
+          personalisierte Werbung gezeigt. Details:
+          <a href="https://policies.google.com/technologies/ads"
+            >https://policies.google.com/technologies/ads</a
+          >
+        </p>
+        <p>
+          <b>Käufe (Pro).</b> Käufe laufen über den Apple App Store oder Google Play; deine
+          Zahlungsdaten sehen wir nie. Zur Prüfung der Käufe nutzen wir RevenueCat; RevenueCat
+          erhält eine zufällig erzeugte anonyme Nutzernummer und die Kaufinformation, nicht deine
+          Identität. Details:
+          <a href="https://www.revenuecat.com/privacy">https://www.revenuecat.com/privacy</a>
+        </p>
+        <p>
+          <b>Bestenlisten.</b> Wenn du bei Game Center (Apple) oder Google Play Games angemeldet
+          bist, wird dein Ergebnis mit deinem dortigen Spielernamen an die Bestenliste dieses
+          Dienstes gesendet. Dafür gelten die Datenschutzbestimmungen von Apple bzw. Google.
+        </p>
+        <p>
+          <b>Analyse.</b> Um das Spiel zu verbessern, können wir anonyme Nutzungsdaten erheben (z.
+          B. welcher Platz und welche Linie gewählt wurden, wie viele Level ein Match dauerte). Sie
+          identifizieren dich nicht.
+        </p>
+        <p>
+          <b>Kinder.</b> Das Spiel ist für alle geeignet, richtet sich aber nicht an Kinder unter 13
+          Jahren. Wir erheben nicht wissentlich personenbezogene Daten von Kindern.
+        </p>
+        <p>
+          <b>Kontakt.</b> Bei Fragen:
+          <a href="mailto:ismetkorucuoglu07@gmail.com">ismetkorucuoglu07@gmail.com</a>
+        </p>
+      </section>
+
+      <section lang="fr" data-l="fr">
+        <h1>In or Out — Politique de confidentialité</h1>
+        <p class="dim">Dernière mise à jour : 21 octobre 2026</p>
+        <p class="note">
+          Cette traduction est fournie à titre indicatif ; en cas de différence, la version anglaise
+          prévaut.
+        </p>
+        <p>
+          In or Out (« le jeu ») est un jeu de juge de ligne de tennis développé par İsmet
+          Korucuoğlu. Cette politique explique quelles informations le jeu utilise.
+        </p>
+        <p>
+          <b>Données que nous collectons.</b> Aucune. Nous ne demandons ni compte, ni nom, ni
+          e-mail, ni position. Tes meilleurs scores, résultats du Défi 20, ta série et tes réglages
+          (langue, son, mode daltonien, vibration) sont stockés uniquement sur ton appareil et ne
+          nous sont jamais envoyés. Supprimer le jeu les supprime.
+        </p>
+        <p>
+          <b>Notifications.</b> Les rappels « Garde ta série » sont des notifications locales
+          programmées sur ton appareil, pas envoyées par un serveur. Tu peux les désactiver dans
+          Réglages.
+        </p>
+        <p>
+          <b>Partage.</b> Quand tu touches « Partager », la carte de score est créée sur ton
+          appareil et envoyée à l’app que tu choisis. Nous ne la voyons pas et ne la conservons pas.
+        </p>
+        <p>
+          <b>Publicités (version gratuite).</b> La version gratuite affiche des publicités Google
+          AdMob. AdMob peut traiter des données comme l’identifiant publicitaire de l’appareil,
+          l’adresse IP et des informations sur l’appareil pour afficher et mesurer les publicités.
+          Dans l’Espace économique européen et au Royaume-Uni, ton consentement est demandé d’abord
+          ; sur iPhone, l’autorisation de suivi d’Apple est demandée. Si tu refuses, des publicités
+          non personnalisées sont affichées. Détails :
+          <a href="https://policies.google.com/technologies/ads"
+            >https://policies.google.com/technologies/ads</a
+          >
+        </p>
+        <p>
+          <b>Achats (Pro).</b> Les achats passent par l’Apple App Store ou Google Play ; nous ne
+          voyons jamais tes données de paiement. Nous utilisons RevenueCat pour vérifier les achats
+          ; RevenueCat reçoit un numéro d’utilisateur anonyme généré au hasard et les informations
+          d’achat, pas ton identité. Détails :
+          <a href="https://www.revenuecat.com/privacy">https://www.revenuecat.com/privacy</a>
+        </p>
+        <p>
+          <b>Classements.</b> Si tu es connecté à Game Center (Apple) ou Google Play Games, ton
+          score est envoyé au classement de ce service sous ton nom de joueur. Cela relève des
+          politiques de confidentialité d’Apple ou de Google.
+        </p>
+        <p>
+          <b>Statistiques.</b> Pour améliorer le jeu, nous pouvons collecter des données
+          d’utilisation anonymes (par ex. quel court et quelle ligne ont été choisis, combien de
+          niveaux a duré un match). Elles ne t’identifient pas.
+        </p>
+        <p>
+          <b>Enfants.</b> Le jeu convient à tous mais ne s’adresse pas aux enfants de moins de 13
+          ans. Nous ne collectons pas sciemment d’informations personnelles sur des enfants.
+        </p>
+        <p>
+          <b>Contact.</b> Pour toute question :
+          <a href="mailto:ismetkorucuoglu07@gmail.com">ismetkorucuoglu07@gmail.com</a>
+        </p>
+      </section>
+
+      <section lang="ja" data-l="ja">
+        <h1>In or Out — プライバシーポリシー</h1>
+        <p class="dim">最終更新日：2026年10月21日</p>
+        <p class="note">この翻訳は参考用です。内容に違いがある場合は英語版が優先されます。</p>
+        <p>
+          In or Out（以下「本ゲーム」）は、İsmet Korucuoğlu
+          が開発したテニスの線審ゲームです。このポリシーでは、本ゲームが使用する情報について説明します。
+        </p>
+        <p>
+          <b>収集する情報。</b
+          >ありません。アカウント、名前、メールアドレス、位置情報は求めません。ベストスコア、デイリー20の結果、連続記録、設定（言語、サウンド、色覚サポートモード、振動）は端末内にのみ保存され、当方に送信されることはありません。ゲームを削除するとこれらも削除されます。
+        </p>
+        <p>
+          <b>通知。</b
+          >「連続記録を守ろう」のリマインダーは端末内で設定されるローカル通知で、サーバーから送信されるものではありません。設定でオフにできます。
+        </p>
+        <p>
+          <b>シェア。</b
+          >「シェア」をタップすると、スコアカードは端末内で作成され、あなたが選んだアプリに送られます。当方がそれを見たり保存したりすることはありません。
+        </p>
+        <p>
+          <b>広告（無料版）。</b>無料版では Google AdMob の広告が表示されます。AdMob
+          は、広告の表示と効果測定のために、端末の広告 ID、IP
+          アドレス、端末情報などのデータを処理する場合があります。欧州経済領域と英国では最初に同意を求めます。iPhone
+          では Apple
+          のトラッキング許可を求めます。拒否した場合は、パーソナライズされていない広告が表示されます。詳細：<a
+            href="https://policies.google.com/technologies/ads"
+            >https://policies.google.com/technologies/ads</a
+          >
+        </p>
+        <p>
+          <b>購入（Pro）。</b>購入は Apple App Store または Google Play
+          を通じて行われ、当方が支払い情報を見ることはありません。購入の確認には RevenueCat
+          を使用します。RevenueCat
+          に送られるのは、ランダムに作成された匿名のユーザー番号と購入情報であり、あなたの身元ではありません。詳細：<a
+            href="https://www.revenuecat.com/privacy"
+            >https://www.revenuecat.com/privacy</a
+          >
+        </p>
+        <p>
+          <b>ランキング。</b>Game Center（Apple）または Google Play Games
+          にサインインしている場合、スコアはそのサービスでのプレイヤー名でランキングに送信されます。これには
+          Apple または Google のプライバシーポリシーが適用されます。
+        </p>
+        <p>
+          <b>分析。</b
+          >ゲーム改善のため、匿名の利用データ（どのコートとラインが選ばれたか、試合が何レベル続いたかなど）を収集する場合があります。これによりあなたが特定されることはありません。
+        </p>
+        <p>
+          <b>お子様。</b
+          >本ゲームは全年齢向けですが、13歳未満のお子様を対象としたものではありません。お子様の個人情報を故意に収集することはありません。
+        </p>
+        <p>
+          <b>お問い合わせ。</b>ご質問はこちらへ：<a href="mailto:ismetkorucuoglu07@gmail.com"
+            >ismetkorucuoglu07@gmail.com</a
+          >
+        </p>
+      </section>
+
+      <section lang="id" data-l="id">
+        <h1>In or Out — Kebijakan Privasi</h1>
+        <p class="dim">Terakhir diperbarui: 21 Oktober 2026</p>
+        <p class="note">
+          Terjemahan ini hanya untuk informasi; jika ada perbedaan, versi bahasa Inggris yang
+          berlaku.
+        </p>
+        <p>
+          In or Out ("game ini") adalah game hakim garis tenis yang dikembangkan oleh İsmet
+          Korucuoğlu. Kebijakan ini menjelaskan informasi apa saja yang digunakan game ini.
+        </p>
+        <p>
+          <b>Informasi yang kami kumpulkan.</b> Tidak ada. Kami tidak meminta akun, nama, email,
+          atau lokasi. Skor terbaik, hasil Harian 20, runtun, dan pengaturanmu (bahasa, suara, mode
+          buta warna, getaran) hanya disimpan di perangkatmu dan tidak pernah dikirim ke kami.
+          Menghapus game akan menghapusnya juga.
+        </p>
+        <p>
+          <b>Notifikasi.</b> Pengingat "Jaga runtunmu" adalah notifikasi lokal yang dijadwalkan di
+          perangkatmu, bukan dikirim dari server. Kamu bisa mematikannya di Pengaturan.
+        </p>
+        <p>
+          <b>Berbagi.</b> Saat kamu mengetuk "Bagikan", kartu skor dibuat di perangkatmu dan dikirim
+          ke aplikasi yang kamu pilih. Kami tidak melihat atau menyimpannya.
+        </p>
+        <p>
+          <b>Iklan (versi gratis).</b> Versi gratis menampilkan iklan dari Google AdMob. AdMob dapat
+          memproses data seperti ID iklan perangkat, alamat IP, dan informasi perangkat untuk
+          menampilkan dan mengukur iklan. Di Wilayah Ekonomi Eropa dan Inggris, persetujuanmu
+          diminta terlebih dahulu; di iPhone, izin pelacakan Apple diminta. Jika kamu menolak, iklan
+          yang tidak dipersonalisasi akan ditampilkan. Detail:
+          <a href="https://policies.google.com/technologies/ads"
+            >https://policies.google.com/technologies/ads</a
+          >
+        </p>
+        <p>
+          <b>Pembelian (Pro).</b> Pembelian dilakukan melalui Apple App Store atau Google Play; kami
+          tidak pernah melihat data pembayaranmu. Kami menggunakan RevenueCat untuk memverifikasi
+          pembelian; RevenueCat menerima nomor pengguna anonim yang dibuat secara acak dan informasi
+          pembelian, bukan identitasmu. Detail:
+          <a href="https://www.revenuecat.com/privacy">https://www.revenuecat.com/privacy</a>
+        </p>
+        <p>
+          <b>Papan peringkat.</b> Jika kamu masuk ke Game Center (Apple) atau Google Play Games,
+          skormu dikirim ke papan peringkat layanan itu dengan nama pemainmu di sana. Hal ini diatur
+          oleh kebijakan privasi Apple atau Google.
+        </p>
+        <p>
+          <b>Analitik.</b> Untuk meningkatkan game, kami dapat mengumpulkan data penggunaan anonim
+          (mis. lapangan dan garis mana yang dipilih, berapa level sebuah pertandingan berlangsung).
+          Data ini tidak mengidentifikasi dirimu.
+        </p>
+        <p>
+          <b>Anak-anak.</b> Game ini cocok untuk semua orang, tetapi tidak ditujukan untuk anak di
+          bawah 13 tahun. Kami tidak dengan sengaja mengumpulkan informasi pribadi dari anak-anak.
+        </p>
+        <p>
+          <b>Kontak.</b> Untuk pertanyaan:
+          <a href="mailto:ismetkorucuoglu07@gmail.com">ismetkorucuoglu07@gmail.com</a>
+        </p>
+      </section>
+
+      <section lang="ko" data-l="ko">
+        <h1>In or Out — 개인정보 처리방침</h1>
+        <p class="dim">최종 업데이트: 2026년 10월 21일</p>
+        <p class="note">이 번역은 참고용이며, 내용이 다를 경우 영어 원문이 우선합니다.</p>
+        <p>
+          In or Out("게임")은 İsmet Korucuoğlu가 개발한 테니스 선심 게임입니다. 이 방침은 게임이
+          어떤 정보를 사용하는지 설명합니다.
+        </p>
+        <p>
+          <b>수집하는 정보.</b> 없습니다. 계정, 이름, 이메일, 위치를 요청하지 않습니다. 최고 점수,
+          데일리 20 결과, 연속 기록, 설정(언어, 소리, 색맹 모드, 진동)은 기기에만 저장되며 저희에게
+          전송되지 않습니다. 게임을 삭제하면 함께 삭제됩니다.
+        </p>
+        <p>
+          <b>알림.</b> "연속 기록을 지키세요" 알림은 기기에서 예약되는 로컬 알림이며 서버에서 보내지
+          않습니다. 설정에서 끌 수 있습니다.
+        </p>
+        <p>
+          <b>공유.</b> "공유"를 누르면 점수 카드가 기기에서 만들어져 선택한 앱으로 전송됩니다.
+          저희는 이를 보거나 저장하지 않습니다.
+        </p>
+        <p>
+          <b>광고(무료 버전).</b> 무료 버전에는 Google AdMob 광고가 표시됩니다. AdMob은 광고를
+          표시하고 측정하기 위해 기기 광고 ID, IP 주소, 기기 정보 등의 데이터를 처리할 수 있습니다.
+          유럽경제지역과 영국에서는 먼저 동의를 요청하며, iPhone에서는 Apple의 추적 허용을
+          요청합니다. 거부하면 맞춤형이 아닌 광고가 표시됩니다. 자세히:
+          <a href="https://policies.google.com/technologies/ads"
+            >https://policies.google.com/technologies/ads</a
+          >
+        </p>
+        <p>
+          <b>구매(Pro).</b> 구매는 Apple App Store 또는 Google Play를 통해 이루어지며, 저희는 결제
+          정보를 볼 수 없습니다. 구매 확인에는 RevenueCat을 사용합니다. RevenueCat에는 신원이 아닌,
+          무작위로 생성된 익명 사용자 번호와 구매 정보만 전달됩니다. 자세히:
+          <a href="https://www.revenuecat.com/privacy">https://www.revenuecat.com/privacy</a>
+        </p>
+        <p>
+          <b>순위표.</b> Game Center(Apple) 또는 Google Play Games에 로그인한 경우, 점수가 해당
+          서비스의 플레이어 이름으로 순위표에 전송됩니다. 이는 Apple 또는 Google의 개인정보
+          처리방침을 따릅니다.
+        </p>
+        <p>
+          <b>분석.</b> 게임 개선을 위해 익명의 사용 데이터(예: 어떤 코트와 라인을 골랐는지, 경기가
+          몇 레벨까지 이어졌는지)를 수집할 수 있습니다. 이 데이터로 개인을 식별할 수 없습니다.
+        </p>
+        <p>
+          <b>어린이.</b> 게임은 모든 연령에 적합하지만 13세 미만 어린이를 대상으로 하지 않습니다.
+          어린이의 개인정보를 고의로 수집하지 않습니다.
+        </p>
+        <p>
+          <b>문의.</b> 질문은 여기로:
+          <a href="mailto:ismetkorucuoglu07@gmail.com">ismetkorucuoglu07@gmail.com</a>
+        </p>
+      </section>
+
+      <section lang="ru" data-l="ru">
+        <h1>In or Out — Политика конфиденциальности</h1>
+        <p class="dim">Последнее обновление: 21 октября 2026 г.</p>
+        <p class="note">
+          Этот перевод приведён для удобства; при расхождениях действует английская версия.
+        </p>
+        <p>
+          In or Out («игра») — игра о теннисном линейном судье, разработанная İsmet Korucuoğlu. Эта
+          политика объясняет, какую информацию использует игра.
+        </p>
+        <p>
+          <b>Какие данные мы собираем.</b> Никаких. Мы не просим аккаунт, имя, e-mail или
+          местоположение. Лучшие результаты, результаты «Дейли 20», серия и настройки (язык, звук,
+          режим для дальтоников, вибрация) хранятся только на твоём устройстве и никогда не
+          отправляются нам. При удалении игры они удаляются.
+        </p>
+        <p>
+          <b>Уведомления.</b> Напоминания «Сохрани серию» — локальные уведомления, запланированные
+          на устройстве, а не отправленные с сервера. Их можно отключить в Настройках.
+        </p>
+        <p>
+          <b>Поделиться.</b> Когда ты нажимаешь «Поделиться», карточка с результатом создаётся на
+          устройстве и отправляется в выбранное тобой приложение. Мы её не видим и не храним.
+        </p>
+        <p>
+          <b>Реклама (бесплатная версия).</b> В бесплатной версии показывается реклама Google AdMob.
+          AdMob может обрабатывать такие данные, как рекламный идентификатор устройства, IP-адрес и
+          сведения об устройстве, чтобы показывать и измерять рекламу. В Европейской экономической
+          зоне и Великобритании сначала запрашивается согласие; на iPhone запрашивается разрешение
+          Apple на отслеживание. Если ты откажешься, будет показываться неперсонализированная
+          реклама. Подробнее:
+          <a href="https://policies.google.com/technologies/ads"
+            >https://policies.google.com/technologies/ads</a
+          >
+        </p>
+        <p>
+          <b>Покупки (Pro).</b> Покупки проходят через Apple App Store или Google Play; мы никогда
+          не видим платёжные данные. Для проверки покупок мы используем RevenueCat; RevenueCat
+          получает случайно созданный анонимный номер пользователя и сведения о покупке, а не твою
+          личность. Подробнее:
+          <a href="https://www.revenuecat.com/privacy">https://www.revenuecat.com/privacy</a>
+        </p>
+        <p>
+          <b>Таблицы рекордов.</b> Если ты вошёл в Game Center (Apple) или Google Play Games,
+          результат отправляется в таблицу этого сервиса под твоим именем игрока там. Это
+          регулируется политиками конфиденциальности Apple или Google.
+        </p>
+        <p>
+          <b>Аналитика.</b> Чтобы улучшать игру, мы можем собирать анонимные данные об использовании
+          (например, какой корт и линия выбраны, сколько уровней длился матч). Они не позволяют тебя
+          идентифицировать.
+        </p>
+        <p>
+          <b>Дети.</b> Игра подходит для всех, но не предназначена для детей младше 13 лет. Мы
+          сознательно не собираем личные данные детей.
+        </p>
+        <p>
+          <b>Контакты.</b> Вопросы:
+          <a href="mailto:ismetkorucuoglu07@gmail.com">ismetkorucuoglu07@gmail.com</a>
+        </p>
+      </section>
+
+      <section lang="zh-Hant" data-l="zh">
+        <h1>In or Out — 隱私權政策</h1>
+        <p class="dim">最後更新：2026 年 10 月 21 日</p>
+        <p class="note">本譯文僅供參考；如有差異，以英文版本為準。</p>
+        <p>
+          In or Out（「本遊戲」）是由 İsmet Korucuoğlu
+          開發的網球司線員遊戲。本政策說明本遊戲使用哪些資訊。
+        </p>
+        <p>
+          <b>我們收集的資訊。</b>沒有。我們不要求帳號、姓名、電子郵件或位置。你的最佳成績、每日 20
+          球結果、連續紀錄和設定（語言、聲音、色盲模式、震動）只儲存在你的裝置上，絕不會傳送給我們。刪除遊戲時也會一併刪除。
+        </p>
+        <p>
+          <b>通知。</b
+          >「保持連續紀錄」提醒是在你的裝置上排程的本機通知，不是由伺服器傳送。你可以在「設定」中關閉。
+        </p>
+        <p>
+          <b>分享。</b>點選「分享」時，成績卡會在你的裝置上產生，並傳送到你選擇的
+          App。我們不會看到或保存它。
+        </p>
+        <p>
+          <b>廣告（免費版）。</b>免費版會顯示 Google AdMob 廣告。AdMob 可能會處理裝置廣告識別碼、IP
+          位址和裝置資訊等資料，以顯示和評估廣告。在歐洲經濟區和英國會先徵求你的同意；在 iPhone
+          上會請求 Apple 的追蹤權限。若你拒絕，將顯示非個人化廣告。詳情：<a
+            href="https://policies.google.com/technologies/ads"
+            >https://policies.google.com/technologies/ads</a
+          >
+        </p>
+        <p>
+          <b>購買（Pro）。</b>購買透過 Apple App Store 或 Google Play
+          進行；我們絕不會看到你的付款資料。我們使用 RevenueCat 驗證購買；RevenueCat
+          收到的是隨機產生的匿名使用者編號和購買資訊，而非你的身分。詳情：<a
+            href="https://www.revenuecat.com/privacy"
+            >https://www.revenuecat.com/privacy</a
+          >
+        </p>
+        <p>
+          <b>排行榜。</b>若你已登入 Game Center（Apple）或 Google Play
+          Games，你的成績會以你在該服務的玩家名稱傳送到其排行榜。這部分適用 Apple 或 Google
+          的隱私權政策。
+        </p>
+        <p>
+          <b>分析。</b
+          >為了改進遊戲，我們可能會收集匿名使用資料（例如選了哪個球場和哪條線、一場比賽持續了幾個等級）。這些資料無法識別你的身分。
+        </p>
+        <p>
+          <b>兒童。</b>本遊戲適合所有人，但並非以 13
+          歲以下兒童為對象。我們不會在知情的情況下收集兒童的個人資訊。
+        </p>
+        <p>
+          <b>聯絡我們。</b>如有疑問：<a href="mailto:ismetkorucuoglu07@gmail.com"
+            >ismetkorucuoglu07@gmail.com</a
+          >
+        </p>
+      </section>
     </main>
+    <script>
+      (function () {
+        var S = {
+          tr: {
+            support: 'Destek',
+            privacy: 'Gizlilik',
+            lang: 'Dil',
+            badge: 'tr',
+            alt: "App Store'dan İndirin",
+            title: 'In or Out · Gizlilik',
+            html: 'tr',
+          },
+          en: {
+            support: 'Support',
+            privacy: 'Privacy',
+            lang: 'Language',
+            badge: 'en',
+            alt: 'Download on the App Store',
+            title: 'In or Out · Privacy',
+            html: 'en',
+          },
+          es: {
+            support: 'Soporte',
+            privacy: 'Privacidad',
+            lang: 'Idioma',
+            badge: 'en',
+            alt: 'Download on the App Store',
+            title: 'In or Out · Privacidad',
+            html: 'es',
+          },
+          pt: {
+            support: 'Suporte',
+            privacy: 'Privacidade',
+            lang: 'Idioma',
+            badge: 'en',
+            alt: 'Download on the App Store',
+            title: 'In or Out · Privacidade',
+            html: 'pt-BR',
+          },
+          de: {
+            support: 'Support',
+            privacy: 'Datenschutz',
+            lang: 'Sprache',
+            badge: 'en',
+            alt: 'Download on the App Store',
+            title: 'In or Out · Datenschutz',
+            html: 'de',
+          },
+          fr: {
+            support: 'Assistance',
+            privacy: 'Confidentialité',
+            lang: 'Langue',
+            badge: 'en',
+            alt: 'Download on the App Store',
+            title: 'In or Out · Confidentialité',
+            html: 'fr',
+          },
+          ja: {
+            support: 'サポート',
+            privacy: 'プライバシー',
+            lang: '言語',
+            badge: 'en',
+            alt: 'Download on the App Store',
+            title: 'In or Out · プライバシー',
+            html: 'ja',
+          },
+          id: {
+            support: 'Dukungan',
+            privacy: 'Privasi',
+            lang: 'Bahasa',
+            badge: 'en',
+            alt: 'Download on the App Store',
+            title: 'In or Out · Privasi',
+            html: 'id',
+          },
+          ko: {
+            support: '지원',
+            privacy: '개인정보',
+            lang: '언어',
+            badge: 'en',
+            alt: 'Download on the App Store',
+            title: 'In or Out · 개인정보',
+            html: 'ko',
+          },
+          ru: {
+            support: 'Поддержка',
+            privacy: 'Конфиденциальность',
+            lang: 'Язык',
+            badge: 'en',
+            alt: 'Download on the App Store',
+            title: 'In or Out · Конфиденциальность',
+            html: 'ru',
+          },
+          zh: {
+            support: '支援',
+            privacy: '隱私權',
+            lang: '語言',
+            badge: 'en',
+            alt: 'Download on the App Store',
+            title: 'In or Out · 隱私權',
+            html: 'zh-Hant',
+          },
+        };
+        var root = document.documentElement;
+        var sel = document.getElementById('lang');
+        function apply(l) {
+          var s = S[l] || S.en;
+          root.setAttribute('data-lang', l);
+          root.lang = s.html;
+          document.title = s.title;
+          sel.value = l;
+          document.getElementById('nav-support').textContent = s.support;
+          document.getElementById('nav-privacy').textContent = s.privacy;
+          document.getElementById('nav-support').href = 'index.html?lang=' + l;
+          document.getElementById('nav-privacy').href = 'privacy.html?lang=' + l;
+          document.getElementById('lang-label').textContent = s.lang;
+          var b = document.getElementById('badge');
+          b.src = 'app-store-badge-' + s.badge + '.svg';
+          b.alt = s.alt;
+        }
+        apply(root.getAttribute('data-lang') || 'en');
+        sel.addEventListener('change', function () {
+          try {
+            localStorage.setItem('inorout-site-lang', sel.value);
+          } catch (e) {}
+          try {
+            var u = new URL(location.href);
+            u.searchParams.set('lang', sel.value);
+            history.replaceState(null, '', u);
+          } catch (e) {}
+          apply(sel.value);
+        });
+      })();
+    </script>
   </body>
 </html>
